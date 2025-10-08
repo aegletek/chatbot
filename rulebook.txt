@@ -1,0 +1,68 @@
+# Project Rulebook
+# =================
+# This document contains the official guidelines and best practices for development.
+# It is divided into two sections:
+# 1. General Rules: Universal principles applicable to any software project.
+# 2. Project-Specific Rules: Conventions and standards for this specific project.
+
+# Part 1: General Development Rules
+# ---------------------------------
+# These rules are project-agnostic and form the foundation of our development philosophy.
+
+---
+### 1. Versioning & Change Management
+
+**1.1. Semantic Versioning:**
+All projects follow Semantic Versioning (MAJOR.MINOR.PATCH - e.g., v2.1.0).
+- **MAJOR:** For significant, breaking changes.
+- **MINOR:** For substantial, backward-compatible new features or refactoring.
+- **PATCH:** For minor bug fixes or small tweaks.
+
+**1.2. Change Log Discipline:**
+Every version change MUST be documented in `CHANGELOG.md`.
+- Each entry must clearly state the "Change:", "Reason:", and "Changed Outcome:".
+
+---
+### 2. Code & Architecture Principles
+
+**2.1. Configuration vs. Logic:**
+Maintain a strict separation between configuration (data, the "what") and execution (logic, the "how"). You should be able to change a setting without touching application code.
+
+**2.2. Don't Repeat Yourself (DRY):**
+Never duplicate code. If logic is used in more than one place, centralize it in a reusable function or module.
+
+**2.3. Development Philosophy:**
+- **Break Down Complex Tasks:** If a task is failing or difficult, break it into the smallest possible independent steps and verify each one.
+- **Principle of Surgical Changes ("Don't Touch What Works"):** When asked to make a change, modify only the code directly necessary. Apply the minimal change first, verify it, and then propose any further refactoring as a separate action.
+
+---
+### 3. Testing
+
+**3.1. Test New Logic:**
+Any significant new feature or refactoring must be accompanied by corresponding unit tests to prevent future regressions.
+
+---
+### 4. Standard Project Structure
+
+A clear, predictable project structure is mandatory.
+- **/src:** All primary application source code resides here. This includes subdirectories for core logic, configuration (e.g., `/config`), and utilities (e.g., `/utils`).
+- **/data:** For all raw, processed, and output data. Should be git-ignored if large.
+- **/tests:** Contains all unit, integration, and other automated tests.
+- **/docs:** Project documentation (e.g., architecture, setup).
+- **Configuration Files (e.g., `pyproject.toml`, `.gitignore`):** Must be in the project root.
+
+---
+### 5. Commands & Environment
+
+**5.1. Activating the Virtual Environment:**
+- **Command:** `.venv\Scripts\activate`
+- **Explanation:** Must be run before using other project commands.
+
+**5.2. Syncing Dependencies:**
+- **Command:** `uv sync`
+- **Explanation:** Installs/updates dependencies from `uv.lock`.
+
+**5.3. Adding a New Dependency:**
+- **Command:** `uv pip install <package-name>`
+- **Explanation:** After installing, manually add the new package to `pyproject.toml`.
+
