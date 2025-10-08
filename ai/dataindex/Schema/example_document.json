@@ -1,0 +1,17 @@
+{
+  "class": "AlternateDocument",
+  "description": "An alternate schema for storing documents with different properties.",
+  "vectorizer": "text2vec-openai",
+  "properties": [
+    {
+      "name": "text",
+      "dataType": ["text"],
+      "description": "The content of the document chunk."
+    },
+    {
+      "name": "source",
+      "dataType": ["text"],
+      "description": "The original filename of the document."
+    }
+  ]
+}
